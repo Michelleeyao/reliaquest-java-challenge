@@ -1,6 +1,7 @@
 package com.challenge.api.service;
 
 import com.challenge.api.model.Employee;
+import com.challenge.api.model.EmployeeModel;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -9,24 +10,27 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class MockeEmployeeService implements EmployeeService {
+public class MockEmployeeService implements EmployeeService {
 
     private static final Map<UUID, Employee> employeeStore = new ConcurrentHashMap<>();
-    private UUID uuid;
 
-    //mock data
     static {
-
         UUID id1 = UUID.randomUUID();
-        employeeStore.put(id1, new Employee(id1, "Michelle", "Yao", "Developer"));
-        UUID id2 = UUID.randomUUID();
-        employeeStore.put(id2, new Employee(id2, "Selin", "Ciltas", "Personality Hire"));
-        UUID id3 = UUID.randomUUID();
-        employeeStore.put(id3, new Employee(id3, "Ria", "Saldajeno", "President"));
-        UUID id4 = UUID.randomUUID();
-        employeeStore.put(id4, new Employee(id4, "Annika", "Singh", "Vice-President"));
+        employeeStore.put(id1, new EmployeeModel(id1, "Michelle", "Yao", "Software Engineer"));
 
+        UUID id2 = UUID.randomUUID();
+        employeeStore.put(id2, new EmployeeModel(id2, "Ria", "Saldejeno", "Product Manager"));
+
+        UUID id3 = UUID.randomUUID();
+        employeeStore.put(id3, new EmployeeModel(id3, "Annika", "Singh", "Tech Consultant"));
+
+        UUID id4 = UUID.randomUUID();
+        employeeStore.put(id4, new EmployeeModel(id4, "Selin", "Ciltas", "President"));
+
+        UUID id5 = UUID.randomUUID();
+        employeeStore.put(id5, new EmployeeModel(id5, "Lee", "Gallivan", "Environmental Scientist"));
     }
+
 
     @Override
     public List<Employee> getAllEmployees() {
