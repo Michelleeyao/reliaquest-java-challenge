@@ -2,12 +2,12 @@ package com.challenge.api.service;
 
 import com.challenge.api.model.Employee;
 import com.challenge.api.model.EmployeeModel;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 
 @Service
 public class MockEmployeeService implements EmployeeService {
@@ -31,7 +31,6 @@ public class MockEmployeeService implements EmployeeService {
         employeeStore.put(id5, new EmployeeModel(id5, "Lee", "Gallivan", "Environmental Scientist"));
     }
 
-
     @Override
     public List<Employee> getAllEmployees() {
 
@@ -43,7 +42,7 @@ public class MockEmployeeService implements EmployeeService {
 
         Employee employee = employeeStore.get(uuid);
         if (employee == null) {
-            throw new EmployeeNotFoundException("Employee with UUID: " + uuid + "can't be found.");
+//            throw new EmployeeNotFoundException("Employee with UUID: " + uuid + "can't be found.");
         }
         return employee;
     }

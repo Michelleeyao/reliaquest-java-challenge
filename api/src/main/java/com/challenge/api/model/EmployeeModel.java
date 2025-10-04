@@ -16,10 +16,10 @@ public class EmployeeModel implements Employee {
     private Instant contractHireDate;
     private Instant contractTerminationDate;
 
-    //no argument constructor
+    // no argument constructor
     public EmployeeModel() {}
 
-    //parameterized constructor
+    // parameterized constructor
     public EmployeeModel(UUID uuid, String firstName, String lastName, String jobTitle) {
         this.uuid = uuid;
         this.firstName = firstName;
@@ -29,7 +29,7 @@ public class EmployeeModel implements Employee {
         this.contractHireDate = Instant.now();
     }
 
-    //getter and setter functions
+    // getter and setter functions
     @Override
     public UUID getUuid() {
         return uuid;
