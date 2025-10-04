@@ -3,9 +3,7 @@ package com.challenge.api.model;
 import java.time.Instant;
 import java.util.UUID;
 
-
 public interface Employee {
-
     UUID getUuid();
 
     void setUuid(UUID uuid);

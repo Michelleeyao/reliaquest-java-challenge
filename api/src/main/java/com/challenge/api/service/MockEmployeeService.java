@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatus;
 
+//A mock implementation of the EmployeeService that uses a simple map
+//to store and manage employee data, simulating a database
 @Service
 public class MockEmployeeService implements EmployeeService {
 
@@ -33,15 +35,15 @@ public class MockEmployeeService implements EmployeeService {
         employeeStore.put(id5, new EmployeeModel(id5, "Lee", "Gallivan", "Environmental Scientist"));
     }
 
+//  Retrieves a list of all employees from the in-memory store
     @Override
     public List<Employee> getAllEmployees() {
-
         return new ArrayList<>(employeeStore.values());
     }
 
+//  Retrieves a single employee by their UUID
     @Override
     public Employee getEmployeeByUuid(UUID uuid) {
-
         Employee employee = employeeStore.get(uuid);
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found with UUID: " + uuid);
@@ -49,9 +51,9 @@ public class MockEmployeeService implements EmployeeService {
         return employee;
     }
 
+//  Creates a new employee, generates a UUID for it, and saves it to the in-memory map
     @Override
     public Employee createEmployee(Employee employee) {
-
         UUID employeeId = UUID.randomUUID();
         employee.setUuid(employeeId);
         employeeStore.put(employeeId, employee);

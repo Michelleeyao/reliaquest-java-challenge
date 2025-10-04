@@ -5,14 +5,12 @@ package com.challenge.api.dto;
  * to create a new employee. It acts as a Data Transfer Object (DTO).
  */
 public class CreateEmployeeRequest {
-
     private String firstName;
     private String lastName;
     private String jobTitle;
 
     // Getters and Setters are required for Spring Boot to map the incoming JSON
     // from the request body to this object.
-
     public String getFirstName() {
         return firstName;
     }
