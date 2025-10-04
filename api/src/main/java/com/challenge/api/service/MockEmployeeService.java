@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 @Service
 public class MockEmployeeService implements EmployeeService {
@@ -42,7 +44,7 @@ public class MockEmployeeService implements EmployeeService {
 
         Employee employee = employeeStore.get(uuid);
         if (employee == null) {
-//            throw new EmployeeNotFoundException("Employee with UUID: " + uuid + "can't be found.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found with UUID: " + uuid);
         }
         return employee;
     }
